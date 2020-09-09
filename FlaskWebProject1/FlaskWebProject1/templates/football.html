@@ -5,6 +5,15 @@
 <h2>{{ title }}.</h2>
 <h3>{{ message }}</h3>
 
-<p>Use this area to provide additional information.</p>
+<p>Please pick the team you would like to view.</p>
+
+<form method="post" action="link2">
+    <input type="text" name="search" />
+    <input type="submit" value="Search">
+</form>
+
+<p>{{ link3 }}</p>
+
+<p><a href="https://www.bbc.co.uk/sport/football/teams">BBC Sport</a></p>
 
 {% endblock %}

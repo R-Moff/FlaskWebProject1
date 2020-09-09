@@ -3,7 +3,7 @@ Routes and views for the flask application.
 """
 
 from datetime import datetime
-from flask import render_template
+from flask import render_template, redirect, url_for, request
 from FlaskWebProject1 import app
 
 @app.route('/')
@@ -36,12 +36,20 @@ def about():
         message='Your application description page.'
     )
 
-@app.route('/football')
+@app.route('/football', methods=['post', 'get'])
 def football():
     """Renders the football page."""
+    link=request.form.get('search')
     return render_template(
         'football.html',
         title='Football',
         year=datetime.now().year,
-        message='Football news.'
+        message='Football news.',
+        
+        link=request.form.get('search'),
+        link2='https://www.bbc.co.uk/sport/football/teams/',
+        link3=link2 + link
     )
+
+
+
