@@ -35,3 +35,13 @@ def about():
         year=datetime.now().year,
         message='Your application description page.'
     )
+
+@app.route('/football')
+def football():
+    """Renders the football page."""
+    return render_template(
+        'football.html',
+        title='Football',
+        year=datetime.now().year,
+        message='Football news.'
+    )
