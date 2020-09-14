@@ -9,6 +9,7 @@ import pypyodbc
 #import pymssql
 #pypyodbc
 connection = pypyodbc.connect('Driver={SQL Server};Server=LAPTOP-3TH991FS;Database=TutorialDB;uid=ryant;pwd=;Trusted_Connection=yes;')
+mycursor = connection.cursor()
 
 
 #TutorialDB.
@@ -44,7 +45,6 @@ def about():
 
 @app.route('/football', methods=['post', 'get'])
 def football():    
-    mycursor = connection.cursor()
     mycursor.execute('select * from Customers')
     data = mycursor.fetchall()
     """Renders the football page."""
