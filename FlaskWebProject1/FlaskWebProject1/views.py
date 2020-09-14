@@ -5,6 +5,12 @@ Routes and views for the flask application.
 from datetime import datetime
 from flask import render_template, redirect, url_for, request
 from FlaskWebProject1 import app
+import pypyodbc
+import pymssql
+#pypyodbc
+connection = pymssql.connect('Driver={SQL Server};Server=LAPTOP-3TH991FS;Database=TutorialDB;uid=LAPTOP-3TH991FS\ryant;')
+mycursor = connection.cursor()
+
 
 @app.route('/')
 @app.route('/home')
@@ -45,10 +51,8 @@ def football():
         title='Football',
         year=datetime.now().year,
         message='Football news.',
-        
-        link=request.form.get('search'),
-        link2='https://www.bbc.co.uk/sport/football/teams/',
-        link3=link2 + link
+
+        #mycursor.execute = ("select * from Customers")  
     )
 
 
