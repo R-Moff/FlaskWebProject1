@@ -16,4 +16,19 @@
 
 <p><a href="https://www.bbc.co.uk/sport/football/teams">BBC Sport</a></p>
 
+
+{% for item in data %}
+<table style="border: 1px solid black;
+        padding: 15px;
+        border-collapse: collapse;">
+    <tr>
+        <td>{{item[0]}}</td>
+        <td>{{item[1]}}</td>
+        <td>{{item[2]}}</td>
+        <td>{{item[3]}}</td>
+    </tr>
+</table>
+{% endfor %}
+
+
 {% endblock %}

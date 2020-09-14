@@ -6,12 +6,12 @@ from datetime import datetime
 from flask import render_template, redirect, url_for, request
 from FlaskWebProject1 import app
 import pypyodbc
-import pymssql
+#import pymssql
 #pypyodbc
-connection = pymssql.connect('Driver={SQL Server};Server=LAPTOP-3TH991FS;Database=TutorialDB;uid=LAPTOP-3TH991FS\ryant;')
-mycursor = connection.cursor()
+connection = pypyodbc.connect('Driver={SQL Server};Server=LAPTOP-3TH991FS;Database=TutorialDB;uid=ryant;pwd=;Trusted_Connection=yes;')
 
 
+#TutorialDB.
 @app.route('/')
 @app.route('/home')
 def home():
@@ -43,7 +43,10 @@ def about():
     )
 
 @app.route('/football', methods=['post', 'get'])
-def football():
+def football():    
+    mycursor = connection.cursor()
+    mycursor.execute('select * from Customers')
+    data = mycursor.fetchall()
     """Renders the football page."""
     link=request.form.get('search')
     return render_template(
@@ -51,8 +54,7 @@ def football():
         title='Football',
         year=datetime.now().year,
         message='Football news.',
-
-        #mycursor.execute = ("select * from Customers")  
+        data = data
     )
 
 
